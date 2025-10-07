@@ -50,12 +50,42 @@
   <section id="contact" class="contact">
     <h2>Kontak</h2>
     <p>Email: vellumgracia.com</p>
+    <section class="testimoni">
+  <h2>Testimoni Klien</h2>
+  <div class="testimoni-card">
+    <p>"Website kami meningkat 3x lipat pengunjungnya setelah bekerja sama!"</p>
+    <strong>- Andi, Pemilik Toko Online</strong>
+  </div>
+  <div class="testimoni-card">
+    <p>"Tim Bisnis Kita benar-benar profesional dan cepat tanggap."</p>
+    <strong>- Rina, Konsultan UMKM</strong>
+  </div>
+</section>
+
+<section class="faq">
+  <h2>Pertanyaan Umum</h2>
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <strong>Berapa lama pembuatan website?</strong>
+    <div class="faq-answer">Biasanya antara 1–2 minggu tergantung kompleksitas.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFAQ(this)">
+    <strong>Apakah ada layanan maintenance?</strong>
+    <div class="faq-answer">Ya, kami menyediakan paket pemeliharaan bulanan.</div>
+  </div>
+</section>
+
   </section>
 
   <footer>© 2025 Bisnis Kita. Semua Hak Dilindungi.</footer>
 
   <script>
     console.log("Website Bisnis Kita siap digunakan!");
+    function toggleFAQ(element) {
+  const answer = element.querySelector('.faq-answer');
+  answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+}
+
+    
   </script>
 </body>
 </html>
