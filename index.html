@@ -4,147 +4,314 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bisnis Kita</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    body {font-family: Poppins, sans-serif; margin: 0; background: #f8f9fa; color: #333;}
-    header {background: #4a148c; color: white; text-align: center; padding: 1rem;}
-    nav {background: #6a1b9a; display: flex; justify-content: center; gap: 1rem; padding: 0.5rem;}
-    nav a {color: white; text-decoration: none; font-weight: 500;}
-    .hero {text-align: center; padding: 4rem 1rem; background: #ede7f6;}
-    .hero h1 {margin-bottom: 0.5rem;}
-    .about, .services, .contact {padding: 2rem; max-width: 800px; margin: auto;}
-    .service-card {background: white; margin: 1rem 0; padding: 1rem; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
-    footer {text-align: center; background: #4a148c; color: white; padding: 1rem;}
-    button {background: #6a1b9a; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 5px; cursor: pointer;}
-    .testimoni, .faq {padding: 2rem; max-width: 800px; margin: auto;}
-.testimoni-card {background: white; border-radius: 10px; padding: 1rem; margin: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
-.faq-item {background: #ede7f6; margin: 0.5rem 0; padding: 1rem; border-radius: 8px; cursor: pointer;}
-.faq-answer {display: none; padding-top: 0.5rem;}
-    function toggleFAQ(element) {
-  const answer = element.querySelector('.faq-answer');
-  answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-}
+    /* REKOMENDASI: Tambahkan smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
 
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: #f8f9fa;
+      color: #333;
+    }
 
+    header {
+      background: #4a148c;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    nav {
+      background: #6a1b9a;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0.75rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      /* REKOMENDASI: Efek transisi halus */
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #e1bee7;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+      background: #ede7f6;
+    }
+
+    .hero h1 {
+      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+    }
+
+    /* KOREKSI: Gunakan <main> untuk konten utama dan beri gaya umum */
+    main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    section {
+      padding: 2.5rem 1rem;
+      max-width: 800px;
+      width: 100%;
+      box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #4a148c;
+    }
+
+    .service-card, .testimoni-card, .team-card {
+      background: white;
+      margin: 1rem 0;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      /* REKOMENDASI: Efek transisi saat di-hover */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service-card:hover, .testimoni-card:hover, .team-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    }
+
+    /* REKOMENDASI: Style untuk bagian Tim */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      text-align: center;
+    }
+
+    .team-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    
+    .team-card h3 {
+        margin: 0.5rem 0 0.2rem 0;
+    }
+
+    /* REKOMENDASI: Style untuk form kontak */
+    .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .contact-form input, .contact-form textarea {
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .faq-item {
+      background: #ede7f6;
+      margin: 0.5rem 0;
+      padding: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      display: none;
+      padding-top: 1rem;
+      border-top: 1px solid #d1c4e9;
+      margin-top: 1rem;
+    }
+    
+    button {
+      background: #6a1b9a;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      /* REKOMENDASI: Efek transisi halus */
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background: #4a148c;
+    }
+
+    footer {
+      text-align: center;
+      background: #4a148c;
+      color: white;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
   </style>
 </head>
 <body>
-  <header><h1>Bisnis Kita</h1></header>
+  <header>
+    <h1>Bisnis Kita</h1>
+  </header>
+  
   <nav>
     <a href="#about">Tentang</a>
     <a href="#services">Layanan</a>
+    <a href="#team">Tim</a>
     <a href="#contact">Kontak</a>
+    <a href="#faq">FAQ</a>
   </nav>
 
-  <section class="hero">
-    <h1>Solusi Digital untuk Bisnis Anda</h1>
-    <p>Kembangkan bisnis Anda bersama kami.</p>
-    <button onclick="alert('vellumgracia@gmail.com!')">Hubungi Kami</button>
-  </section>
+  <main>
+    <section class="hero">
+      <h1>Solusi Digital untuk Bisnis Anda</h1>
+      <p>Kembangkan bisnis Anda bersama kami.</p>
+      <a href="#contact"><button>Hubungi Kami</button></a>
+    </section>
 
-  <section id="about" class="about">
-    <h2>Tentang Kami</h2>
-    <p>Kami membantu bisnis berkembang melalui strategi digital yang efektif dan inovatif.</p>
-  </section>
+    <section id="about">
+      <h2>Tentang Kami</h2>
+      <p>Kami adalah tim profesional yang berdedikasi membantu bisnis berkembang melalui strategi digital yang efektif, inovatif, dan terukur.</p>
+    </section>
 
-  <section id="services" class="services">
-    <h2>Layanan Kami</h2>
-    <div class="service-card"><h3>Desain Website</h3><p>Tampilan profesional dan responsif.</p></div>
-    <div class="service-card"><h3>Pemasaran Digital</h3><p>Tingkatkan visibilitas merek Anda.</p></div>
-  </section>
+    <section id="services">
+      <h2>Layanan Kami</h2>
+      <div class="service-card">
+        <h3>Desain Website</h3>
+        <p>Tampilan profesional, modern, dan responsif untuk semua perangkat.</p>
+      </div>
+      <div class="service-card">
+        <h3>Pemasaran Digital</h3>
+        <p>Tingkatkan visibilitas dan jangkau audiens yang tepat dengan strategi SEO dan SEM.</p>
+      </div>
+    </section>
+    
+    <section id="testimoni">
+      <h2>Testimoni Klien</h2>
+      <div class="testimoni-card">
+        <p>"Website kami meningkat 3x lipat pengunjungnya setelah bekerja sama dengan Bisnis Kita!"</p>
+        <strong>- Andi, Pemilik Toko Online</strong>
+      </div>
+      <div class="testimoni-card">
+        <p>"Tim Bisnis Kita benar-benar profesional dan cepat tanggap. Sangat direkomendasikan!"</p>
+        <strong>- Rina, Konsultan UMKM</strong>
+      </div>
+    </section>
 
-  <section id="contact" class="contact">
-    <h2>Kontak</h2>
-    <p>Email: vellumgracia.com</p>
-    <section class="testimoni">
-  <h2>Testimoni Klien</h2>
-  <div class="testimoni-card">
-    <p>"Website kami meningkat 3x lipat pengunjungnya setelah bekerja sama dengan bisnis kita!"</p>
-    <strong>- Andi, Pemilik Toko Online</strong>
-  </div>
-  <div class="testimoni-card">
-    <p>"Tim Bisnis Kita benar-benar profesional dan cepat tanggap."</p>
-    <strong>- Rina, Konsultan UMKM</strong>
-  </div>
-      <section class="team">
-  <h2>Tim Kami</h2>
-  <div class="team-grid">
-    <div class="team-card">
-      <img src="https://via.placeholder.com/100" alt="CEO">
-      <h3>ZULFA FAHMIY</h3>
-      <p>CEO & Founder</p>
-    </div>
-    <div class="team-card">
-      <img src="https://share.google/images/frq8zt2a4F6fHKBGC">
-      <h3>CHAT GPT</h3>
-      <p>Desainer UI/UX</p>
-    </div>
-    <div class="team-card">
-      <img src="https://via.placeholder.com/100" alt="Marketing">
-      <h3>CHELSEA DEWI F</h3>
-      <p>Digital Marketing</p>
-    </div>
-  </div>
-</section>
+    <section id="team">
+      <h2>Tim Kami</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="https://via.placeholder.com/150/4a148c/ffffff?text=ZF" alt="Foto ZULFA FAHMIY">
+          <h3>ZULFA FAHMIY</h3>
+          <p>CEO & Founder</p>
+        </div>
+        <div class="team-card">
+          <img src="https://via.placeholder.com/150/6a1b9a/ffffff?text=CG" alt="Foto CHAT GPT">
+          <h3>CHAT GPT</h3>
+          <p>Desainer UI/UX</p>
+        </div>
+        <div class="team-card">
+          <img src="https://via.placeholder.com/150/4a148c/ffffff?text=CD" alt="Foto CHELSEA DEWI F">
+          <h3>CHELSEA DEWI F</h3>
+          <p>Digital Marketing</p>
+        </div>
+      </div>
+    </section>
 
-<section class="contact">
-  <h2>Hubungi Kami</h2>
-  <div class="contact-form">
-    <input type="text" id="nama" placeholder="Nama Anda">
-    <input type="email" id="email" placeholder="Email Anda">
-    <textarea id="pesan" rows="4" placeholder="Tulis pesan Anda di sini..."></textarea>
-    <button onclick="kirimPesan()">Kirim</button>
-  </div>
-</section>
+    <section id="contact">
+      <h2>Hubungi Kami</h2>
+      <p>Isi formulir di bawah ini dan tim kami akan segera menghubungi Anda.</p>
+      <div class="contact-form">
+        <input type="text" id="nama" placeholder="Nama Anda" required>
+        <input type="email" id="email" placeholder="Email Anda" required>
+        <textarea id="pesan" rows="4" placeholder="Tulis pesan Anda di sini..." required></textarea>
+        <button onclick="kirimPesan()">Kirim</button>
+      </div>
+    </section>
 
-</section>
-
-<section class="faq">
-  <h2>Pertanyaan Umum</h2>
-  <div class="faq-item" onclick="toggleFAQ(this)">
-    <strong>Berapa lama pembuatan website?</strong>
-    <div class="faq-answer">Biasanya antara 1–2 minggu tergantung kompleksitas.</div>
-  </div>
-  <div class="faq-item" onclick="toggleFAQ(this)">
-    <strong>Apakah ada layanan maintenance?</strong>
-    <div class="faq-answer">Ya, kami menyediakan paket pemeliharaan bulanan dan berbagai aktivitas lainnya.</div>
-  </div>
-</section>
-
-  </section>
-
-  <footer>© 2025 Bisnis Kita. Semua Hak Dilindungi Oleh Pihak Berwajib.</footer>
+    <section id="faq">
+      <h2>Pertanyaan Umum</h2>
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <strong>Berapa lama pembuatan website?</strong>
+        <div class="faq-answer">Biasanya antara 1–2 minggu tergantung tingkat kompleksitas dan kelengkapan materi dari klien.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFAQ(this)">
+        <strong>Apakah ada layanan maintenance?</strong>
+        <div class="faq-answer">Ya, kami menyediakan paket pemeliharaan bulanan untuk memastikan website Anda selalu aman, cepat, dan ter-update.</div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>© 2025 Bisnis Kita. Semua Hak Cipta Dilindungi.</p>
+    <p id="waktu"></p>
+  </footer>
 
   <script>
     console.log("Website Bisnis Kita siap digunakan!");
-    function toggleFAQ(element) {
-  const answer = element.querySelector('.faq-answer');
-  answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
-}
-function kirimPesan() {
-  const nama = document.getElementById("nama").value;
-  const email = document.getElementById("email").value;
-  const pesan = document.getElementById("pesan").value;
-
-  if (!nama || !email || !pesan) {
-    alert("Harap isi semua kolom sebelum mengirim!");
-    return;
-  }
-
-  alert(`Terima kasih, {nama}! Pesan Anda telah dikirim.`);
-  document.getElementById("nama").value = "";
-  document.getElementById("email").value = "";
-  document.getElementById("pesan").value = "";
-}
-
-// Jam dinamis di footer
-function updateTime() {
-  const timeElem = document.getElementById("waktu");
-  const now = new Date();
-  timeElem.textContent = now.toLocaleString("id-ID");
-}
-setInterval(updateTime, 1000);
-
     
+    // KOREKSI: Fungsi ini hanya perlu didefinisikan sekali di dalam <script>
+    function toggleFAQ(element) {
+      const answer = element.querySelector('.faq-answer');
+      answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function kirimPesan() {
+      const nama = document.getElementById("nama").value;
+      const email = document.getElementById("email").value;
+      const pesan = document.getElementById("pesan").value;
+
+      if (!nama || !email || !pesan) {
+        alert("Harap isi semua kolom sebelum mengirim!");
+        return;
+      }
+
+      // KOREKSI: Menggunakan template literal (backticks ``) agar variabel terbaca
+      alert(`Terima kasih, ${nama}! Pesan Anda telah dikirim.`);
+      
+      // Mengosongkan form setelah dikirim
+      document.getElementById("nama").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("pesan").value = "";
+    }
+
+    // Jam dinamis di footer
+    function updateTime() {
+      const timeElem = document.getElementById("waktu");
+      if (timeElem) { // KOREKSI: Cek apakah elemen ada sebelum memanipulasinya
+          const now = new Date();
+          const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+          timeElem.textContent = now.toLocaleString("id-ID", options);
+      }
+    }
+    
+    // Panggil sekali saat load, lalu update setiap detik
+    updateTime(); 
+    setInterval(updateTime, 1000);
   </script>
 </body>
 </html>
