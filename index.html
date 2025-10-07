@@ -19,6 +19,11 @@
 .testimoni-card {background: white; border-radius: 10px; padding: 1rem; margin: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
 .faq-item {background: #ede7f6; margin: 0.5rem 0; padding: 1rem; border-radius: 8px; cursor: pointer;}
 .faq-answer {display: none; padding-top: 0.5rem;}
+    function toggleFAQ(element) {
+  const answer = element.querySelector('.faq-answer');
+  answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+}
+
 
   </style>
 </head>
@@ -60,6 +65,37 @@
     <p>"Tim Bisnis Kita benar-benar profesional dan cepat tanggap."</p>
     <strong>- Rina, Konsultan UMKM</strong>
   </div>
+      <section class="team">
+  <h2>Tim Kami</h2>
+  <div class="team-grid">
+    <div class="team-card">
+      <img src="https://via.placeholder.com/100" alt="CEO">
+      <h3>Alexandra Putri</h3>
+      <p>CEO & Founder</p>
+    </div>
+    <div class="team-card">
+      <img src="https://via.placeholder.com/100" alt="Desainer">
+      <h3>Bima Pratama</h3>
+      <p>Desainer UI/UX</p>
+    </div>
+    <div class="team-card">
+      <img src="https://via.placeholder.com/100" alt="Marketing">
+      <h3>Rina Oktaviani</h3>
+      <p>Digital Marketing</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact">
+  <h2>Hubungi Kami</h2>
+  <div class="contact-form">
+    <input type="text" id="nama" placeholder="Nama Anda">
+    <input type="email" id="email" placeholder="Email Anda">
+    <textarea id="pesan" rows="4" placeholder="Tulis pesan Anda di sini..."></textarea>
+    <button onclick="kirimPesan()">Kirim</button>
+  </div>
+</section>
+
 </section>
 
 <section class="faq">
@@ -84,6 +120,29 @@
   const answer = element.querySelector('.faq-answer');
   answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
 }
+function kirimPesan() {
+  const nama = document.getElementById("nama").value;
+  const email = document.getElementById("email").value;
+  const pesan = document.getElementById("pesan").value;
+
+  if (!nama || !email || !pesan) {
+    alert("Harap isi semua kolom sebelum mengirim!");
+    return;
+  }
+
+  alert(`Terima kasih, ${nama}! Pesan Anda telah dikirim.`);
+  document.getElementById("nama").value = "";
+  document.getElementById("email").value = "";
+  document.getElementById("pesan").value = "";
+}
+
+// Jam dinamis di footer
+function updateTime() {
+  const timeElem = document.getElementById("waktu");
+  const now = new Date();
+  timeElem.textContent = now.toLocaleString("id-ID");
+}
+setInterval(updateTime, 1000);
 
     
   </script>
