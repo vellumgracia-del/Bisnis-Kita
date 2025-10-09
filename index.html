@@ -3,12 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bisnis Kita</title>
+  <title>Bisnis Kita | Solusi Digital Profesional</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+  
   <style>
-    /* REKOMENDASI: Tambahkan smooth scrolling */
+    /* =================================
+      PALET WARNA BIRU EKSKLUSIF
+      =================================
+      Primary (Biru Tua):      #0D2A4C
+      Secondary (Biru Sedang): #1A4A8D
+      Background (Biru Muda):  #F0F4F8
+      Hover/Accent (Biru Cerah): #6699CC
+      Teks Umum:               #333
+      Teks Putih:              #FFFFFF
+      =================================
+    */
+
+    /* --- General Styling --- */
     html {
       scroll-behavior: smooth;
     }
@@ -16,12 +30,13 @@
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      background: #f8f9fa;
+      background-color: #F0F4F8; /* Latar belakang biru muda */
       color: #333;
     }
 
+    /* --- Header & Navigation --- */
     header {
-      background: #4a148c;
+      background-color: #0D2A4C; /* Biru Tua */
       color: white;
       text-align: center;
       padding: 1rem;
@@ -29,143 +44,171 @@
     }
 
     nav {
-      background: #6a1b9a;
+      background-color: #1A4A8D; /* Biru Sedang */
       display: flex;
       justify-content: center;
+      flex-wrap: wrap; /* Agar responsif di layar kecil */
       gap: 1.5rem;
       padding: 0.75rem;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
 
     nav a {
       color: white;
       text-decoration: none;
       font-weight: 500;
-      /* REKOMENDASI: Efek transisi halus */
       transition: color 0.3s ease;
     }
 
     nav a:hover {
-      color: #e1bee7;
+      color: #6699CC; /* Biru Cerah */
     }
 
-    .hero {
-      text-align: center;
-      padding: 4rem 1rem;
-      background: #ede7f6;
-    }
-
-    .hero h1 {
-      margin-bottom: 0.5rem;
-      font-size: 2.5rem;
-    }
-
-    /* KOREKSI: Gunakan <main> untuk konten utama dan beri gaya umum */
+    /* --- Main Content & Sections --- */
     main {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     section {
-      padding: 2.5rem 1rem;
-      max-width: 800px;
+      padding: 3rem 1.5rem;
+      max-width: 900px;
       width: 100%;
-      box-sizing: border-box; /* Pastikan padding tidak menambah lebar */
+      box-sizing: border-box;
+    }
+
+    h1, h2, h3 {
+      margin-top: 0;
     }
 
     h2 {
       text-align: center;
       margin-bottom: 2rem;
-      color: #4a148c;
+      color: #0D2A4C; /* Biru Tua */
+      font-size: 2.2rem;
     }
 
+    /* --- Hero Section --- */
+    .hero {
+      text-align: center;
+      padding: 4rem 1rem;
+      background-color: #e9eef3; /* Sedikit lebih gelap dari body */
+    }
+
+    .hero h1 {
+      margin-bottom: 0.5rem;
+      font-size: 2.8rem;
+      color: #0D2A4C; /* Biru Tua */
+    }
+
+    /* --- Reusable Cards --- */
     .service-card, .testimoni-card, .team-card {
-      background: white;
-      margin: 1rem 0;
+      background-color: white;
+      margin-bottom: 1.5rem;
       padding: 1.5rem;
       border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      /* REKOMENDASI: Efek transisi saat di-hover */
+      border-left: 5px solid #1A4A8D; /* Aksen Biru Sedang */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
     .service-card:hover, .testimoni-card:hover, .team-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.12);
     }
-
-    /* REKOMENDASI: Style untuk bagian Tim */
+    
+    /* --- Team Section --- */
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 1.5rem;
       text-align: center;
     }
 
     .team-card img {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 1rem;
+      border: 3px solid #1A4A8D;
     }
     
     .team-card h3 {
-        margin: 0.5rem 0 0.2rem 0;
+      margin: 0.5rem 0 0.2rem 0;
+      color: #0D2A4C;
     }
 
-    /* REKOMENDASI: Style untuk form kontak */
+    /* --- Contact & Forms --- */
     .contact-form {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
     .contact-form input, .contact-form textarea {
-        padding: 0.8rem;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        font-family: 'Poppins', sans-serif;
+      padding: 0.8rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
-
+    
+    .contact-form input:focus, .contact-form textarea:focus {
+        outline: none;
+        border-color: #1A4A8D;
+        box-shadow: 0 0 5px rgba(26, 74, 141, 0.5);
+    }
+    
+    /* --- FAQ Section --- */
     .faq-item {
-      background: #ede7f6;
+      background: white;
       margin: 0.5rem 0;
-      padding: 1rem;
+      padding: 1.2rem;
       border-radius: 8px;
       cursor: pointer;
+      border: 1px solid #e0e0e0;
+      transition: background-color 0.3s;
+    }
+
+    .faq-item:hover {
+      background-color: #e9eef3;
     }
 
     .faq-answer {
       display: none;
       padding-top: 1rem;
-      border-top: 1px solid #d1c4e9;
+      border-top: 1px solid #BCCCDC; /* Border Biru-Abu */
       margin-top: 1rem;
+      color: #555;
     }
     
+    /* --- Buttons & Footer --- */
     button {
-      background: #6a1b9a;
+      background-color: #1A4A8D; /* Biru Sedang */
       color: white;
       border: none;
-      padding: 0.8rem 1.5rem;
+      padding: 0.8rem 1.8rem;
       border-radius: 5px;
       cursor: pointer;
       font-weight: 500;
       font-family: 'Poppins', sans-serif;
-      /* REKOMENDASI: Efek transisi halus */
-      transition: background-color 0.3s ease;
+      font-size: 1rem;
+      transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
     button:hover {
-      background: #4a148c;
+      background-color: #0D2A4C; /* Biru Tua */
+      transform: scale(1.05);
     }
 
     footer {
       text-align: center;
-      background: #4a148c;
+      background-color: #0D2A4C; /* Biru Tua */
       color: white;
       padding: 1.5rem;
       margin-top: 2rem;
@@ -180,6 +223,7 @@
   <nav>
     <a href="#about">Tentang</a>
     <a href="#services">Layanan</a>
+    <a href="#testimoni">Testimoni</a>
     <a href="#team">Tim</a>
     <a href="#contact">Kontak</a>
     <a href="#faq">FAQ</a>
@@ -188,24 +232,24 @@
   <main>
     <section class="hero">
       <h1>Solusi Digital untuk Bisnis Anda</h1>
-      <p>Kembangkan bisnis Anda bersama kami.</p>
+      <p>Kembangkan bisnis Anda ke level berikutnya bersama kami.</p>
       <a href="#contact"><button>Hubungi Kami</button></a>
     </section>
 
     <section id="about">
       <h2>Tentang Kami</h2>
-      <p>Kami adalah tim profesional yang berdedikasi membantu bisnis berkembang melalui strategi digital yang efektif, inovatif, dan terukur.</p>
+      <p>Kami adalah tim profesional yang berdedikasi membantu bisnis berkembang melalui strategi digital yang efektif, inovatif, dan terukur untuk mencapai hasil yang maksimal.</p>
     </section>
 
     <section id="services">
       <h2>Layanan Kami</h2>
       <div class="service-card">
-        <h3>Desain Website</h3>
-        <p>Tampilan profesional, modern, dan responsif untuk semua perangkat.</p>
+        <h3>Desain Website Profesional</h3>
+        <p>Tampilan modern, fungsional, dan responsif untuk semua perangkat.</p>
       </div>
       <div class="service-card">
-        <h3>Pemasaran Digital</h3>
-        <p>Tingkatkan visibilitas dan jangkau audiens yang tepat dengan strategi SEO dan SEM.</p>
+        <h3>Pemasaran Digital Terpadu</h3>
+        <p>Tingkatkan visibilitas dan jangkau audiens yang tepat dengan strategi SEO & SEM.</p>
       </div>
     </section>
     
@@ -222,20 +266,20 @@
     </section>
 
     <section id="team">
-      <h2>Tim Kami</h2>
+      <h2>Tim Profesional Kami</h2>
       <div class="team-grid">
         <div class="team-card">
-          <img src="IMG_6668.JPG" alt="Foto ZULFA FAHMIY">
+          <img src="https://via.placeholder.com/150/0D2A4C/ffffff?text=ZF" alt="Foto Zulfa Fahmiy">
           <h3>ZULFA FAHMIY</h3>
           <p>CEO & Founder</p>
         </div>
         <div class="team-card">
-          <img src="https://via.placeholder.com/150/6a1b9a/ffffff?text=CG" alt="Foto CHAT GPT">
+          <img src="https://via.placeholder.com/150/1A4A8D/ffffff?text=CG" alt="Foto Chat GPT">
           <h3>CHAT GPT</h3>
           <p>Desainer UI/UX</p>
         </div>
         <div class="team-card">
-          <img src="https://via.placeholder.com/150/4a148c/ffffff?text=CD" alt="Foto CHELSEA DEWI F">
+          <img src="https://via.placeholder.com/150/6699CC/ffffff?text=CD" alt="Foto Chelsea Dewi F">
           <h3>CHELSEA DEWI F</h3>
           <p>Digital Marketing</p>
         </div>
@@ -245,22 +289,22 @@
     <section id="contact">
       <h2>Hubungi Kami</h2>
       <p>Isi formulir di bawah ini dan tim kami akan segera menghubungi Anda.</p>
-      <div class="contact-form">
-        <input type="text" id="nama" placeholder="Nama Anda" required>
-        <input type="email" id="email" placeholder="Email Anda" required>
-        <textarea id="pesan" rows="4" placeholder="Tulis pesan Anda di sini..." required></textarea>
-        <button onclick="kirimPesan()">Kirim</button>
-      </div>
+      <form class="contact-form" onsubmit="kirimPesan(event)">
+        <input type="text" id="nama" placeholder="Nama Anda" required aria-label="Nama Anda">
+        <input type="email" id="email" placeholder="Email Anda" required aria-label="Email Anda">
+        <textarea id="pesan" rows="5" placeholder="Tulis pesan Anda di sini..." required aria-label="Pesan Anda"></textarea>
+        <button type="submit">Kirim Pesan</button>
+      </form>
     </section>
 
     <section id="faq">
-      <h2>Pertanyaan Umum</h2>
+      <h2>Pertanyaan Umum (FAQ)</h2>
       <div class="faq-item" onclick="toggleFAQ(this)">
-        <strong>Berapa lama pembuatan website?</strong>
-        <div class="faq-answer">Biasanya antara 1–2 minggu tergantung tingkat kompleksitas dan kelengkapan materi dari klien.</div>
+        <strong>Berapa lama proses pembuatan website?</strong>
+        <div class="faq-answer">Biasanya antara 1–2 minggu, tergantung tingkat kompleksitas fitur dan kelengkapan materi dari klien.</div>
       </div>
       <div class="faq-item" onclick="toggleFAQ(this)">
-        <strong>Apakah ada layanan maintenance?</strong>
+        <strong>Apakah ada layanan maintenance website?</strong>
         <div class="faq-answer">Ya, kami menyediakan paket pemeliharaan bulanan untuk memastikan website Anda selalu aman, cepat, dan ter-update.</div>
       </div>
     </section>
@@ -274,43 +318,46 @@
   <script>
     console.log("Website Bisnis Kita siap digunakan!");
     
-    // KOREKSI: Fungsi ini hanya perlu didefinisikan sekali di dalam <script>
     function toggleFAQ(element) {
       const answer = element.querySelector('.faq-answer');
-      answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+      const isVisible = answer.style.display === 'block';
+      // Menutup semua FAQ lain sebelum membuka yang baru (opsional, tapi UX bagus)
+      document.querySelectorAll('.faq-answer').forEach(ans => ans.style.display = 'none');
+      // Toggle FAQ yang diklik
+      answer.style.display = isVisible ? 'none' : 'block';
     }
 
-    function kirimPesan() {
+    function kirimPesan(event) {
+      event.preventDefault(); // Mencegah form submit dan refresh halaman
+      
       const nama = document.getElementById("nama").value;
       const email = document.getElementById("email").value;
       const pesan = document.getElementById("pesan").value;
 
-      if (!nama || !email || !pesan) {
+      // Validasi sederhana
+      if (!nama.trim() || !email.trim() || !pesan.trim()) {
         alert("Harap isi semua kolom sebelum mengirim!");
         return;
       }
 
-      // KOREKSI: Menggunakan template literal (backticks ``) agar variabel terbaca
-      alert(`Terima kasih, ${nama}! Pesan Anda telah dikirim.`);
+      alert(`Terima kasih, ${nama}! Pesan Anda telah berhasil dikirim.`);
       
       // Mengosongkan form setelah dikirim
-      document.getElementById("nama").value = "";
-      document.getElementById("email").value = "";
-      document.getElementById("pesan").value = "";
+      event.target.reset();
     }
 
     // Jam dinamis di footer
     function updateTime() {
       const timeElem = document.getElementById("waktu");
-      if (timeElem) { // KOREKSI: Cek apakah elemen ada sebelum memanipulasinya
-          const now = new Date();
-          const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-          timeElem.textContent = now.toLocaleString("id-ID", options);
+      if (timeElem) {
+        const now = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', second: '2-digit', timeZoneName: 'short' };
+        timeElem.textContent = now.toLocaleString("id-ID", options);
       }
     }
     
-    // Panggil sekali saat load, lalu update setiap detik
-    updateTime(); 
+    // Panggil sekali saat halaman dimuat, lalu update setiap detik
+    updateTime();  
     setInterval(updateTime, 1000);
   </script>
 </body>
