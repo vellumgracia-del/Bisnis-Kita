@@ -5,7 +5,7 @@ $status_message = ''; // Variabel untuk menyimpan pesan status
 // Cek apakah formulir sudah di-submit dengan metode POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // GANTI DENGAN ALAMAT EMAIL ANDA
-    $penerima = "admin@bisniskita.com";
+    $penerima = "vellumgracia@gmail.com";
 
     // Ambil dan bersihkan data dari form
     $nama = strip_tags(trim($_POST["nama"]));
