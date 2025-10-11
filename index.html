@@ -30,9 +30,26 @@
     body {
       font-family: 'Poppins', sans-serif;
       margin: 0;
-      background-color: #F0F4F8; /* Latar belakang biru muda */
       color: #333;
+      /* DIUBAH: Latar belakang animasi baru */
+      background: linear-gradient(135deg, #F0F4F8, #d1e0ec, #e9eef3, #F0F4F8);
+      background-size: 400% 400%;
+      animation: animatedBackground 25s ease infinite;
     }
+
+    /* BARU: Keyframes untuk animasi latar belakang */
+    @keyframes animatedBackground {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
 
     /* --- Header & Navigation --- */
     header {
@@ -45,14 +62,30 @@
 
     nav {
       background-color: #1A4A8D; /* Biru Sedang */
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap; /* Agar responsif di layar kecil */
-      gap: 1.5rem;
-      padding: 0.75rem;
+      padding: 0; /* Diubah: Wrapper akan mengatur padding */
       position: sticky;
       top: 0;
       z-index: 1000;
+    }
+
+    /* BARU: Pembungkus untuk menjaga layout tetap di tengah */
+    .nav-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.5rem;
+        padding: 0.75rem 1.5rem;
+        max-width: 900px; /* Samakan dengan max-width section */
+        margin: 0 auto;
+        position: relative; /* Penting untuk menu dropdown */
+    }
+    
+    /* BARU: Pembungkus untuk link-link */
+    .nav-links {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1.5rem;
     }
 
     nav a {
@@ -66,6 +99,26 @@
       color: #6699CC; /* Biru Cerah */
     }
 
+    /* BARU: Tombol menu titik tiga */
+    #menu-toggle {
+        display: none; /* Sembunyi di desktop */
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1001;
+    }
+
+    #menu-toggle .dot {
+        display: block;
+        width: 5px;
+        height: 5px;
+        background: white;
+        border-radius: 50%;
+        margin: 5px 0;
+    }
+
+
     /* --- Main Content & Sections --- */
     main {
       display: flex;
@@ -78,7 +131,19 @@
       max-width: 900px;
       width: 100%;
       box-sizing: border-box;
+      /* Tambahan agar kartu terlihat lebih baik di atas gradien */
+      background-color: rgba(255, 255, 255, 0.5);
+      margin-bottom: 2rem;
+      border-radius: 15px;
     }
+    
+    /* Menghilangkan background tambahan pada beberapa section */
+    .hero, #proyek {
+        background-color: transparent;
+        margin-bottom: 0;
+        border-radius: 0;
+    }
+
 
     h1, h2, h3 {
       margin-top: 0;
@@ -120,6 +185,37 @@
       box-shadow: 0 6px 12px rgba(0,0,0,0.12);
     }
     
+    /* --- Bagian Proyek (BARU) --- */
+    .proyek-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        margin-bottom: 2.5rem;
+        overflow: hidden; /* Agar gambar tidak keluar dari radius */
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .proyek-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+    }
+
+    .proyek-card img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+    
+    .proyek-deskripsi {
+        padding: 1.5rem;
+    }
+
+    .proyek-deskripsi h3 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        color: #0D2A4C;
+    }
+
     /* --- Team Section --- */
     .team-grid {
       display: grid;
@@ -213,6 +309,46 @@
       padding: 1.5rem;
       margin-top: 2rem;
     }
+    
+    /* BARU: Style Responsif untuk Menu Navigasi */
+    @media (max-width: 768px) {
+        .nav-wrapper {
+            justify-content: flex-end; /* Memindahkan konten ke kanan */
+        }
+        
+        #menu-toggle {
+            display: block; /* Tampilkan tombol di mobile */
+        }
+
+        .nav-links {
+            display: none; /* Sembunyikan link di mobile */
+            position: absolute;
+            top: calc(100% + 5px); /* Posisi di bawah nav bar */
+            right: 0;
+            background-color: #0D2A4C; /* Warna lebih gelap agar kontras */
+            flex-direction: column;
+            gap: 0;
+            padding: 0.5rem 0;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            width: 200px;
+        }
+
+        .nav-links.show {
+            display: flex; /* Tampilkan menu saat aktif */
+        }
+
+        .nav-links a {
+            text-align: left;
+            padding: 0.8rem 1.5rem;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .nav-links a:hover {
+            background-color: #1A4A8D;
+        }
+    }
   </style>
 </head>
 <body>
@@ -221,12 +357,22 @@
   </header>
   
   <nav>
-    <a href="#about">Tentang</a>
-    <a href="#services">Layanan</a>
-    <a href="#testimoni">Testimoni</a>
-    <a href="#team">Tim</a>
-    <a href="#contact">Kontak</a>
-    <a href="#faq">FAQ</a>
+    <div class="nav-wrapper">
+        <button id="menu-toggle" aria-label="Buka menu">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </button>
+        <div class="nav-links" id="nav-menu">
+            <a href="#about">Tentang</a>
+            <a href="#services">Layanan</a>
+            <a href="#proyek">Proyek</a>
+            <a href="#testimoni">Testimoni</a>
+            <a href="#team">Tim</a>
+            <a href="#contact">Kontak</a>
+            <a href="#faq">FAQ</a>
+        </div>
+    </div>
   </nav>
 
   <main>
@@ -253,6 +399,30 @@
       </div>
     </section>
     
+    <!-- ================================= -->
+    <!-- =     BAGIAN BARU: PROYEK KAMI    = -->
+    <!-- ================================= -->
+    <section id="proyek">
+        <h2>Proyek Kami</h2>
+        <div class="proyek-card">
+            <img src="https://placehold.co/900x500/0D2A4C/FFFFFF?text=Proyek+Website+Perusahaan" alt="Gambar proyek website perusahaan">
+            <div class="proyek-deskripsi">
+                <h3>Website Profil Perusahaan Modern</h3>
+                <p>Membangun identitas digital yang kuat untuk klien di bidang teknologi dengan desain yang bersih, profesional, dan navigasi yang intuitif.</p>
+            </div>
+        </div>
+        <div class="proyek-card">
+            <img src="https://placehold.co/900x500/1A4A8D/FFFFFF?text=Proyek+Toko+Online" alt="Gambar proyek toko online">
+            <div class="proyek-deskripsi">
+                <h3>Platform E-Commerce Fashion</h3>
+                <p>Merancang dan mengembangkan toko online yang responsif dengan sistem manajemen produk yang mudah digunakan dan integrasi pembayaran yang aman.</p>
+            </div>
+        </div>
+    </section>
+    <!-- ================================= -->
+    <!-- =      AKHIR BAGIAN BARU          = -->
+    <!-- ================================= -->
+    
     <section id="testimoni">
       <h2>Testimoni Klien</h2>
       <div class="testimoni-card">
@@ -274,12 +444,12 @@
           <p>CEO & Founder</p>
         </div>
         <div class="team-card">
-          <img src="" alt="Foto Chat GPT">
+          <img src="https://placehold.co/120x120/1A4A8D/FFFFFF?text=CG" alt="Foto Chat GPT">
           <h3>CHAT GPT</h3>
           <p>Desainer UI/UX</p>
         </div>
         <div class="team-card">
-          <img src="" alt="Foto AL MURTADLO">
+          <img src="https://placehold.co/120x120/6699CC/FFFFFF?text=AM" alt="Foto AL MURTADLO">
           <h3>AL MURTADLO</h3>
           <p>Digital Marketing</p>
         </div>
@@ -317,6 +487,26 @@
 
   <script>
     console.log("Website Bisnis Kita siap digunakan!");
+
+    // BARU: Logika untuk Menu Mobile
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const navMenuLinks = document.querySelectorAll('#nav-menu a');
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+    }
+
+    // Fungsi untuk menutup menu jika link di-klik
+    navMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navMenu.classList.contains('show')) {
+                navMenu.classList.remove('show');
+            }
+        });
+    });
     
     function toggleFAQ(element) {
       const answer = element.querySelector('.faq-answer');
