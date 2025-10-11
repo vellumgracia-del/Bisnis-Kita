@@ -39,16 +39,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 
-      <?php echo $status_message; ?>
-
-      <form class="contact-form" action="" method="post">
-        <input type="text" id="nama" name="nama" placeholder="Nama Anda" required aria-label="Nama Anda">
-        <input type="email" id="email" name="email" placeholder="Email Anda" required aria-label="Email Anda">
-        <textarea id="pesan" name="pesan" rows="5" placeholder="Tulis pesan Anda di sini..." required aria-label="Pesan Anda"></textarea>
-        <button type="submit">Kirim Pesan</button>
-      </form>
-    </section>
-
+      
    
 
   
